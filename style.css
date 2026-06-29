@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 1rem;
+}
+
+.calc-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 1rem;
+}
+
+.calc {
+  background: #1c1c1e;
+  border-radius: 20px;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Display ── */
+.display {
+  background: #1c1c1e;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem 1rem;
+  text-align: right;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.expr {
+  font-size: 14px;
+  color: #888;
+  min-height: 20px;
+  word-break: break-all;
+}
+
+.value {
+  font-size: 48px;
+  font-weight: 300;
+  color: #ffffff;
+  word-break: break-all;
+  line-height: 1.1;
+}
+
+/* ── Button grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  grid-auto-rows: minmax(64px, auto);
+}
+
+.btn {
+  border: none;
+  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  background: #505050;
+  color: #ffffff;
+  transition: filter 0.1s, transform 0.1s;
+  justify-self: stretch;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+}
+
+.btn:active {
+  filter: brightness(0.8);
+  transform: scale(0.96);
+}
+
+/* Function buttons (AC, +/-, %) */
+.btn.op-fn {
+  background: #a5a5a5;
+  color: #1c1c1e;
+}
+
+/* Operator buttons (÷, ×, −, +, =) */
+.btn.op {
+  background: #ff9f0a;
+  color: #ffffff;
+}
+
+.btn.op:hover {
+  filter: brightness(1.15);
+}
+
+/* Clear button */
+.btn.clear {
+  background: #a5a5a5;
+  color: #1c1c1e;
+}
+
+/* Equal button */
+.btn.eq {
+  background: #ff9f0a;
+  color: #ffffff;
+}
+
+/* Zero button spans 2 columns and is pill-shaped */
+.btn.span2 {
+  grid-column: span 2;
+  border-radius: 32px;
+  width: 100%;
+  text-align: left;
+  padding-left: 24px;
+  justify-self: stretch;
+}
+
+@media (max-width: 420px) {
+  .calc {
+    padding: 1rem;
+  }
+
+  .display {
+    min-height: 78px;
+    padding: 0.5rem 0.75rem 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .expr {
+    font-size: 13px;
+  }
+
+  .value {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .grid {
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 18px;
+    min-height: 56px;
+  }
+
+  .btn.span2 {
+    padding-left: 18px;
+  }
+}
